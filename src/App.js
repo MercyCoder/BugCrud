@@ -32,9 +32,9 @@ class App extends Component {
         <div className="container mt-3">
           <Routes>
             <Route path="/" element={<BugsList/>} />
-            {/* <Route path="/bugs" element={<BugsList/>} />
+            <Route path="/bugs" element={<BugsList/>} />
             <Route path="/add" element={<AddBug/>} />
-            <Route path="/bug/:id" element={<Bug/>} /> */}
+            <Route path="/bug/:id" element={<Bug/>} /> 
           </Routes>
         </div>
       </div>
