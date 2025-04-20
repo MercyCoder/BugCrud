@@ -2,6 +2,7 @@ import http from "../http-common";
 
 class BugsDataService {
   getAll() {
+    console.log("response")
     return http.get("/Bugs");
   }
 

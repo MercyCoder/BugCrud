@@ -22,6 +22,7 @@ export default class BugsList extends Component {
 
   componentDidMount() {
     this.retrieveBugs();
+    
   }
 
   onChangeSearchTitle(e) {
@@ -36,9 +37,9 @@ export default class BugsList extends Component {
     BugDataService.getAll()
       .then((response) => {
         this.setState({
-          Bugs: response.data,
+          bugs: response.data.records,
         });
-        console.log(response.data);
+        console.log(response.data.records + "retrieve Bugs!");
       })
       .catch((e) => {
         console.log(e);
@@ -114,7 +115,7 @@ export default class BugsList extends Component {
           <h4>Bugs List</h4>
 
           <ul className="list-group">
-            {bugs &&
+            {
               bugs.map((bug, index) => (
                 <li
                   className={
@@ -124,7 +125,7 @@ export default class BugsList extends Component {
                   onClick={() => this.setActiveBug(bug, index)}
                   key={index}
                 >
-                  {bug.title}
+                  {bug.id}
                 </li>
               ))}
           </ul>

@@ -15,8 +15,8 @@ class Bug extends Component {
     this.state = {
       currentBug: {
         id: null,
-        title: "",
-        description: "",
+        Title: "",
+        Description: "",
         published: false
       },
       message: ""
@@ -34,7 +34,7 @@ class Bug extends Component {
       return {
         currentBug: {
           ...prevState.currentBug,
-          title: title
+          Title: title
         }
       };
     });
@@ -46,7 +46,7 @@ class Bug extends Component {
     this.setState(prevState => ({
       currentBug: {
         ...prevState.currentBug,
-        description: description
+        Description: description
       }
     }));
   }
@@ -55,9 +55,9 @@ class Bug extends Component {
     BugDataService.get(id)
       .then(response => {
         this.setState({
-          currentBug: response.data
+          currentBug: response.data.records
         });
-        console.log(response.data);
+        console.log(response.data.records);
       })
       .catch(e => {
         console.log(e);
@@ -67,8 +67,8 @@ class Bug extends Component {
   updatePublished(status) {
     var data = {
       id: this.state.currentBug.id,
-      title: this.state.currentBug.title,
-      description: this.state.currentBug.description,
+      Title: this.state.currentBug.Title,
+      Description: this.state.currentBug.Description,
       published: status
     };
 
@@ -80,7 +80,7 @@ class Bug extends Component {
             published: status
           }
         }));
-        console.log(response.data);
+        console.log(response.data.records);
       })
       .catch(e => {
         console.log(e);
@@ -93,7 +93,7 @@ class Bug extends Component {
       this.state.currentBug
     )
       .then(response => {
-        console.log(response.data);
+        console.log(response.data.records);
         this.setState({
           message: "The bug was updated successfully!"
         });
