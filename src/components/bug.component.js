@@ -128,7 +128,7 @@ class Bug extends Component {
                   type="text"
                   className="form-control"
                   id="title"
-                  value={currentBug.title}
+                  value={currentBug.Title}
                   onChange={this.onChangeTitle}
                 />
               </div>
@@ -138,7 +138,7 @@ class Bug extends Component {
                   type="text"
                   className="form-control"
                   id="description"
-                  value={currentBug.description}
+                  value={currentBug.Description}
                   onChange={this.onChangeDescription}
                 />
               </div>

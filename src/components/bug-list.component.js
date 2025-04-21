@@ -64,7 +64,7 @@ export default class BugsList extends Component {
   removeAllBugs() {
     BugDataService.deleteAll()
       .then((response) => {
-        console.log(response.data);
+        console.log(response.data.records);
         this.refreshList();
       })
       .catch((e) => {
@@ -76,9 +76,9 @@ export default class BugsList extends Component {
     BugDataService.findByTitle(this.state.searchTitle)
       .then((response) => {
         this.setState({
-          bugs: response.data,
+          bugs: response.data.records
         });
-        console.log(response.data);
+        console.log(response.data.records);
       })
       .catch((e) => {
         console.log(e);
@@ -125,7 +125,7 @@ export default class BugsList extends Component {
                   onClick={() => this.setActiveBug(bug, index)}
                   key={index}
                 >
-                  {bug.id}
+                  {bug.fields.Title}
                 </li>
               ))}
           </ul>
@@ -145,13 +145,13 @@ export default class BugsList extends Component {
                 <label>
                   <strong>Title:</strong>
                 </label>{" "}
-                {currentBug.title}
+                {currentBug.fields.Title}
               </div>
               <div>
                 <label>
                   <strong>Description:</strong>
                 </label>{" "}
-                {currentBug.description}
+                {currentBug.fields.Description}
               </div>
               <div>
                 <label>
@@ -161,7 +161,7 @@ export default class BugsList extends Component {
               </div>
 
               <Link
-                to={"/bugs/" + currentBug.id}
+                to={"/Bugs/" + currentBug.id}
                 className="badge badge-warning"
               >
                 Edit

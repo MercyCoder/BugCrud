@@ -11,8 +11,8 @@ export default class AddBug extends Component {
 
     this.state = {
       id: null,
-      title: "",
-      description: "",
+      Title: "",
+      Description: "",
       published: false,
 
       submitted: false,
@@ -21,28 +21,28 @@ export default class AddBug extends Component {
 
   onChangeTitle(e) {
     this.setState({
-      title: e.target.value,
+      Title: e.target.value,
     });
   }
 
   onChangeDescription(e) {
     this.setState({
-      description: e.target.value,
+      Description: e.target.value,
     });
   }
 
   saveBug() {
     var data = {
-      title: this.state.title,
-      description: this.state.description,
+      Title: this.state.Title,
+      Description: this.state.Description,
     };
 
     BugDataService.create(data)
       .then((response) => {
         this.setState({
           id: response.data.id,
-          title: response.data.title,
-          description: response.data.description,
+          title: response.data.fields.Title,
+          description: response.data.fields.Description,
           published: response.data.published,
 
           submitted: true,
@@ -57,8 +57,8 @@ export default class AddBug extends Component {
   newBug() {
     this.setState({
       id: null,
-      title: "",
-      description: "",
+      Title: "",
+      Description: "",
       published: false,
 
       submitted: false,
@@ -78,15 +78,15 @@ export default class AddBug extends Component {
         ) : (
           <div>
             <div className="form-group">
-              <label htmlFor="title">Title</label>
+              <label htmlFor="Title">Title</label>
               <input
                 type="text"
                 className="form-control"
-                id="title"
+                id="Title"
                 required
-                value={this.state.title}
+                value={this.state.Title}
                 onChange={this.onChangeTitle}
-                name="title"
+                name="Title"
               />
             </div>
 
@@ -97,7 +97,7 @@ export default class AddBug extends Component {
                 className="form-control"
                 id="description"
                 required
-                value={this.state.description}
+                value={this.state.Description}
                 onChange={this.onChangeDescription}
                 name="description"
               />
