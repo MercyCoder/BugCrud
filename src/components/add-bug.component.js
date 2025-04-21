@@ -14,7 +14,6 @@ export default class AddBug extends Component {
       Title: "",
       Description: "",
       published: false,
-
       submitted: false,
     };
   }
@@ -32,9 +31,10 @@ export default class AddBug extends Component {
   }
 
   saveBug() {
-    var data = {
+    var data = {fields:{
       Title: this.state.Title,
       Description: this.state.Description,
+    }
     };
 
     BugDataService.create(data)
@@ -42,7 +42,7 @@ export default class AddBug extends Component {
         this.setState({
           id: response.data.id,
           title: response.data.fields.Title,
-          description: response.data.fields.Description,
+          description: response.data.Description,
           published: response.data.published,
 
           submitted: true,
