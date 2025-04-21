@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import BugDataService from "../services/bug.service";
-import { withRouter } from '../common/with-router';
+import BugDataService from "../services/axios.service";
+import { withRouter } from "../common/with-router";
 
 class Bug extends Component {
   constructor(props) {
@@ -15,11 +15,13 @@ class Bug extends Component {
     this.state = {
       currentBug: {
         id: null,
+        fields: {
         Title: "",
         Description: "",
-        published: false
+        },
+        published: false,
       },
-      message: ""
+      message: "",
     };
   }
 
@@ -30,36 +32,36 @@ class Bug extends Component {
   onChangeTitle(e) {
     const title = e.target.value;
 
-    this.setState(function(prevState) {
+    this.setState(function (prevState) {
       return {
         currentBug: {
           ...prevState.currentBug,
-          Title: title
-        }
+          Title: title,
+        },
       };
     });
   }
 
   onChangeDescription(e) {
     const description = e.target.value;
-    
-    this.setState(prevState => ({
+
+    this.setState((prevState) => ({
       currentBug: {
         ...prevState.currentBug,
-        Description: description
-      }
+        Description: description,
+      },
     }));
   }
 
   getBug(id) {
     BugDataService.get(id)
-      .then(response => {
+      .then((response) => {
         this.setState({
-          currentBug: response.data.records
+          currentBug: response.data.records,
         });
         console.log(response.data.records);
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
   }
@@ -67,49 +69,48 @@ class Bug extends Component {
   updatePublished(status) {
     var data = {
       id: this.state.currentBug.id,
-      Title: this.state.currentBug.Title,
-      Description: this.state.currentBug.Description,
-      published: status
+      fields: {
+        Title: this.state.currentBug.Title,
+        Description: this.state.currentBug.Description,
+      },
+      published: status,
     };
 
     BugDataService.update(this.state.currentBug.id, data)
-      .then(response => {
-        this.setState(prevState => ({
+      .then((response) => {
+        this.setState((prevState) => ({
           currentBug: {
             ...prevState.currentBug,
-            published: status
-          }
+            published: status,
+          },
         }));
         console.log(response.data.records);
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
   }
 
   updateBug() {
-    BugDataService.update(
-      this.state.currentBug.id,
-      this.state.currentBug
-    )
-      .then(response => {
+    BugDataService.update(this.state.currentBug.id, this.state.currentBug)
+      .then((response) => {
         console.log(response.data.records);
         this.setState({
-          message: "The bug was updated successfully!"
+          message: "The bug was updated successfully!",
         });
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
   }
 
-  deleteBug() {    
+  deleteBug() {
     BugDataService.delete(this.state.currentBug.id)
-      .then(response => {
+      .then((response) => {
         console.log(response.data);
-        this.props.router.navigate('/bugs');
+        this.props.router.navigate("/bugs");
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
   }

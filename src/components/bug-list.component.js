@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import BugDataService from "../services/bug.service";
+import BugDataService from "../services/axios.service";
 import { Link } from "react-router-dom";
 
 export default class BugsList extends Component {
@@ -22,7 +22,6 @@ export default class BugsList extends Component {
 
   componentDidMount() {
     this.retrieveBugs();
-    
   }
 
   onChangeSearchTitle(e) {
@@ -76,7 +75,7 @@ export default class BugsList extends Component {
     BugDataService.findByTitle(this.state.searchTitle)
       .then((response) => {
         this.setState({
-          bugs: response.data.records
+          bugs: response.data.records,
         });
         console.log(response.data.records);
       })
@@ -86,8 +85,7 @@ export default class BugsList extends Component {
   }
 
   render() {
-    const { searchTitle, bugs, currentBug, currentIndex } =
-      this.state;
+    const { searchTitle, bugs, currentBug, currentIndex } = this.state;
 
     return (
       <div className="list row">
@@ -115,19 +113,17 @@ export default class BugsList extends Component {
           <h4>Bugs List</h4>
 
           <ul className="list-group">
-            {
-              bugs.map((bug, index) => (
-                <li
-                  className={
-                    "list-group-item " +
-                    (index === currentIndex ? "active" : "")
-                  }
-                  onClick={() => this.setActiveBug(bug, index)}
-                  key={index}
-                >
-                  {bug.fields.Title}
-                </li>
-              ))}
+            {bugs.map((bug, index) => (
+              <li
+                className={
+                  "list-group-item " + (index === currentIndex ? "active" : "")
+                }
+                onClick={() => this.setActiveBug(bug, index)}
+                key={index}
+              >
+                {bug.fields.Title}
+              </li>
+            ))}
           </ul>
 
           <button
@@ -164,7 +160,7 @@ export default class BugsList extends Component {
                 to={"/Bugs/" + currentBug.id}
                 className="badge badge-warning"
               >
-                Edit
+                Edit ???????
               </Link>
             </div>
           ) : (

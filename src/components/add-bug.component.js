@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import BugDataService from "../services/bug.service";
+import BugDataService from "../services/axios.service";
 
 export default class AddBug extends Component {
   constructor(props) {
