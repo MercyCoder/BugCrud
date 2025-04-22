@@ -22,13 +22,14 @@ grid view must be reflected in the Bugs table data stored at Airtable.
 2. You must implement at least one API request using the Axios HTTP client library.
       Scaffolded these calls using a react-router project example. Spent some time figuring out how to setState properly with the child json objects. 
 3. You must implement at least one API request using the Airtable javascript library.
-      Realized near the end of five hours that this referred to a separate API client, not just the Airtable Web API that the client should connect to. I took the remaining time adding the client to the project and starting to understand I might use different clients for different components/calls, I was able to get the calls working, but not integrated into the React UI. This was challenging and interesting as the documentation for the Airtable.js client is less available than the Airtable Web API, but once I got their test project working, I was pleased with how well the client integrated with the Web API, however, applying it to this React instance, would take more time than I have. Were I to continue, I would use Airtable API client to update and delete existing bugs.
+      Realized near the end of five hours that this referred to a separate API client, not just the Airtable Web API that the client should connect to. I took the remaining time adding the client to the project and starting to understand I might use different clients for different components/calls, I was able to get the calls working, but not integrated into the React UI. This was challenging and interesting as the documentation for the Airtable.js client is less available than the Airtable Web API, but once I got their test project working, I was pleased with how well the client integrated with the Web API. However, applying it to this React instance, would take more time than I have. Were I to continue, I would use Airtable API client to update and delete existing bugs.
 4. Other API requests can be made with any method, including methods other than the
 Airtable and Axios libraries.
       Hard to imagine a third library! I appreciated the challenge of using two though, comparing them was interesting. 
 5. Create a github repository in your personal account for this challenge. Create and merge
 pull requests with explanatory notes that demonstrate your progress as you work
 through the coding challenge.
+      
 
 # Getting Started with Create React App
 
