@@ -1,6 +1,6 @@
 import http from "../http-common";
 
-class BugsDataService {
+class BugsAxiosService {
   getAll() {
     console.log("response")
     return http.get("/Bugs");
@@ -31,4 +31,4 @@ class BugsDataService {
   }
 }
 
-export default new BugsDataService();
+export default new BugsAxiosService();
