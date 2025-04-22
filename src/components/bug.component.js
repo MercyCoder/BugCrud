@@ -116,83 +116,85 @@ class Bug extends Component {
   }
   render() {
     const { currentBug } = this.state;
+return(
+  <div>BUG!******************</div>
+)}}
+//     return (
+//       <div>
+//         {currentBug ? (
+//           <div className="edit-form">
+//             <h4>Bug</h4>
+//             <form>
+//               <div className="form-group">
+//                 <label htmlFor="title">Title</label>
+//                 <input
+//                   type="text"
+//                   className="form-control"
+//                   id="title"
+//                   value={currentBug.Title}
+//                   onChange={this.onChangeTitle}
+//                 />
+//               </div>
+//               <div className="form-group">
+//                 <label htmlFor="description">Description</label>
+//                 <input
+//                   type="text"
+//                   className="form-control"
+//                   id="description"
+//                   value={currentBug.Description}
+//                   onChange={this.onChangeDescription}
+//                 />
+//               </div>
 
-    return (
-      <div>
-        {currentBug ? (
-          <div className="edit-form">
-            <h4>Bug</h4>
-            <form>
-              <div className="form-group">
-                <label htmlFor="title">Title</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="title"
-                  value={currentBug.Title}
-                  onChange={this.onChangeTitle}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="description">Description</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="description"
-                  value={currentBug.Description}
-                  onChange={this.onChangeDescription}
-                />
-              </div>
+//               <div className="form-group">
+//                 <label>
+//                   <strong>Status:</strong>
+//                 </label>
+//                 {currentBug.published ? "Published" : "Pending"}
+//               </div>
+//             </form>
 
-              <div className="form-group">
-                <label>
-                  <strong>Status:</strong>
-                </label>
-                {currentBug.published ? "Published" : "Pending"}
-              </div>
-            </form>
+//             {currentBug.published ? (
+//               <button
+//                 className="badge badge-primary mr-2"
+//                 onClick={() => this.updatePublished(false)}
+//               >
+//                 UnPublish
+//               </button>
+//             ) : (
+//               <button
+//                 className="badge badge-primary mr-2"
+//                 onClick={() => this.updatePublished(true)}
+//               >
+//                 Publish
+//               </button>
+//             )}
 
-            {currentBug.published ? (
-              <button
-                className="badge badge-primary mr-2"
-                onClick={() => this.updatePublished(false)}
-              >
-                UnPublish
-              </button>
-            ) : (
-              <button
-                className="badge badge-primary mr-2"
-                onClick={() => this.updatePublished(true)}
-              >
-                Publish
-              </button>
-            )}
+//             <button
+//               className="badge badge-danger mr-2"
+//               onClick={this.deleteBug}
+//             >
+//               Delete
+//             </button>
 
-            <button
-              className="badge badge-danger mr-2"
-              onClick={this.deleteBug}
-            >
-              Delete
-            </button>
-
-            <button
-              type="submit"
-              className="badge badge-success"
-              onClick={this.updateBug}
-            >
-              Update
-            </button>
-            <p>{this.state.message}</p>
-          </div>
-        ) : (
-          <div>
-            <br />
-            <p>Please click on a Bug...</p>
-          </div>
-        )}
-      </div>
-    );
-  }
-}
+//             <button
+//               type="submit"
+//               className="badge badge-success"
+//               onClick={this.updateBug}
+//             >
+//               Update
+//             </button>
+//             <p>{this.state.message}</p>
+//           </div>
+//         ) : (
+//           <div>
+//             <br />
+//             <p>Please click on a Bug...</p>
+//           </div>
+//         )}
+//       </div>
+//     );
+//   }
+// }
 
 export default withRouter(Bug);
