@@ -47,10 +47,9 @@ export default class AddBug extends Component {
 
           submitted: true,
         });
-        console.log(response.data);
       })
       .catch((e) => {
-        console.log(e);
+        console.error(e);
       });
   }
 

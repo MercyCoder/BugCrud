@@ -10,9 +10,10 @@ export default class DeleteBug extends Component {
       id: "",
       records: null,
     };
+    // Pass in Airtable bearer token and base ID here:
     this.base = new Airtable({
-      apiKey: { AIRTABLE_API_KEY },
-    }).base(AIRTABLE_BASE_ID);
+      apiKey: "AIRTABLE_API_TOKEN",
+    }).base("AIRTABLE_API_BASEID");
   }
   componentDidMount() {
     this.fetchData();
@@ -22,7 +23,8 @@ export default class DeleteBug extends Component {
       id: e.target.value,
     });
   }
-
+// Console logs here for WIP development
+// Fetching data is working, and those bug IDs can be used to delete from the UI
   fetchData = () => {
     this.base("Bugs")
       .select({})
@@ -32,7 +34,9 @@ export default class DeleteBug extends Component {
         console.log(records, this.state.records);
       });
   };
-
+// Console logs here for WIP development
+// I could display the IDs in the Bug list but it would be a better to allow for deleting 
+// in the bug list component and use the target click.
   deleteBug = () => {
     if (this.state.id != undefined) {
       this.base("Bugs").destroy(this.state.id, function (err) {

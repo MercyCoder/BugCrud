@@ -2,7 +2,6 @@ import http from "../http-common";
 
 class BugsAxiosService {
   getAll() {
-    console.log("response")
     return http.get("/Bugs");
   }
 

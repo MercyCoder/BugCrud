@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import BugAxiosService from "../services/axios.service";
-import { Link } from "react-router-dom";
 
 export default class BugsList extends Component {
   constructor(props) {
@@ -40,7 +39,7 @@ export default class BugsList extends Component {
         });
       })
       .catch((e) => {
-        console.log(e);
+        console.error(e);
       });
   }
 
@@ -65,7 +64,7 @@ export default class BugsList extends Component {
         this.refreshList();
       })
       .catch((e) => {
-        console.log(e);
+        console.error(e);
       });
   }
 
