@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 import AddBug from "./components/add-bug.component";
-import Bug from "./components/add-bug.component";
+import DeleteBug from "./components/delete-bug.component";
 import BugsList from "./components/bug-list.component";
 
 class App extends Component {
@@ -26,6 +26,11 @@ class App extends Component {
                 Add
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to={"/delete"} className="nav-link">
+                Delete
+              </Link>
+            </li>
           </div>
         </nav>
 
@@ -34,7 +39,7 @@ class App extends Component {
             <Route path="/" element={<BugsList/>} />
             <Route path="/bugs" element={<BugsList/>} />
             <Route path="/add" element={<AddBug/>} />
-            <Route path="/bug/:id" element={<Bug/>} /> 
+            <Route path="/delete" element={<DeleteBug/>} /> 
           </Routes>
         </div>
       </div>
