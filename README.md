@@ -40,6 +40,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ### `npm install axios`
 ### `npm install airtable`
 
+## Authorization and Airtable Base ID
+Create an Airtable account and retrieve a token and a base ID. Replace AIRTABLE_API_TOKEN with your token lines 7 of http-common.js and 14 of delete-bug.component.js and replace AIRTABLE_BASE_ID with your base ID in lines 4 of http-common.js and 15 of delete-bug.component.js
+
 In the project directory, you can run:
 
 ### `npm start`
