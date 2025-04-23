@@ -4,24 +4,48 @@ import Airtable from "airtable";
 export default class DeleteBug extends Component {
   constructor(props) {
     super(props);
-    this.deleteBug = this.deleteBug.bind(this);
+    this.fetchData = this.fetchData.bind(this);
+    this.onChangeID = this.onChangeID.bind(this);
     this.state = {
-      id: null,
+      id: "",
+      records: null,
     };
+    this.base = new Airtable({
+      apiKey: { AIRTABLE_API_KEY },
+    }).base(AIRTABLE_BASE_ID);
+  }
+  componentDidMount() {
+    this.fetchData();
+  }
+  onChangeID(e) {
+    this.setState({
+      id: e.target.value,
+    });
   }
 
-  deleteBug(e){
-  //   this.Airtable.base('Bugs')( e.target.value,
-  //   function (err, deletedRecords) {
-  //     if (err) {
-  //       console.error(err);
-  //       return;
-  //     }
-  //     console.log("Deleted", deletedRecords.length, "records");
-  //   }
-  // );
-  // console.log();
-  }
+  fetchData = () => {
+    this.base("Bugs")
+      .select({})
+      .eachPage((records, fetchNextPage) => {
+        this.setState({ records: records });
+        fetchNextPage();
+        console.log(records, this.state.records);
+      });
+  };
+
+  deleteBug = () => {
+    if (this.state.id != undefined) {
+      this.base("Bugs").destroy(this.state.id, function (err) {
+        if (err) {
+          console.log("Error destroying ", this.state.id, err);
+        } else {
+          console.log("Destroyed " + this.state.id);
+        }
+      });
+    } else {
+      console.log("Undefined Bug");
+    }
+  };
 
   render() {
     return (
@@ -36,15 +60,15 @@ export default class DeleteBug extends Component {
         ) : (
           <div>
             <div className="form-group">
-              <label htmlFor="Title">Bug ID</label>
+              <label htmlFor="ID">Bug ID</label>
               <input
                 type="text"
                 className="form-control"
-                id="Title"
+                id="bugID"
                 required
-                value={this.state.Title}
-                onChange={this.onChangeTitle}
-                name="Title"
+                value={this.state.id}
+                onChange={this.onChangeID}
+                name="bugID"
               />
             </div>
             <button onClick={this.deleteBug} className="btn btn-success">

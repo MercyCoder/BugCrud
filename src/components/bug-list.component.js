@@ -38,7 +38,6 @@ export default class BugsList extends Component {
         this.setState({
           bugs: response.data.records,
         });
-        console.log(response.data.records + "retrieve Bugs!");
       })
       .catch((e) => {
         console.log(e);
@@ -63,7 +62,6 @@ export default class BugsList extends Component {
   removeAllBugs() {
     BugAxiosService.deleteAll()
       .then((response) => {
-        console.log(response.data.records);
         this.refreshList();
       })
       .catch((e) => {
@@ -77,7 +75,6 @@ export default class BugsList extends Component {
         this.setState({
           bugs: response.data.records,
         });
-        console.log(response.data.records);
       })
       .catch((e) => {
         console.log(e);
