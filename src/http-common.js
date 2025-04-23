@@ -1,10 +1,11 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "https://api.airtable.com/v0/appG8fsqYsRBUDwHx/",
+  // Add the Airtable BaseID and bearer token here:
+  baseURL: "https://api.airtable.com/v0/AIRTABLE_BASEID/",
   headers: {
     Authorization:
-      "Bearer ",
+      "Bearer {AIRTABLE_BEARER_TOKEN}",
     "Content-type": "application/json",
   },
 });

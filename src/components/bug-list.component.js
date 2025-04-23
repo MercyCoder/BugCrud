@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import BugDataService from "../services/axios.service";
-import { Link } from "react-router-dom";
+import BugAxiosService from "../services/axios.service";
 
 export default class BugsList extends Component {
   constructor(props) {
@@ -33,15 +32,14 @@ export default class BugsList extends Component {
   }
 
   retrieveBugs() {
-    BugDataService.getAll()
+    BugAxiosService.getAll()
       .then((response) => {
         this.setState({
           bugs: response.data.records,
         });
-        console.log(response.data.records + "retrieve Bugs!");
       })
       .catch((e) => {
-        console.log(e);
+        console.error(e);
       });
   }
 
@@ -61,23 +59,21 @@ export default class BugsList extends Component {
   }
 
   removeAllBugs() {
-    BugDataService.deleteAll()
+    BugAxiosService.deleteAll()
       .then((response) => {
-        console.log(response.data.records);
         this.refreshList();
       })
       .catch((e) => {
-        console.log(e);
+        console.error(e);
       });
   }
 
   searchTitle() {
-    BugDataService.findByTitle(this.state.searchTitle)
+    BugAxiosService.findByTitle(this.state.searchTitle)
       .then((response) => {
         this.setState({
           bugs: response.data.records,
         });
-        console.log(response.data.records);
       })
       .catch((e) => {
         console.log(e);
@@ -125,13 +121,6 @@ export default class BugsList extends Component {
               </li>
             ))}
           </ul>
-
-          <button
-            className="m-3 btn btn-sm btn-danger"
-            onClick={this.removeAllBugs}
-          >
-            Remove All
-          </button>
         </div>
         <div className="col-md-6">
           {currentBug ? (
@@ -155,13 +144,6 @@ export default class BugsList extends Component {
                 </label>{" "}
                 {currentBug.published ? "Published" : "Pending"}
               </div>
-
-              <Link
-                to={"/Bugs/" + currentBug.id}
-                className="badge badge-warning"
-              >
-                Edit ???????
-              </Link>
             </div>
           ) : (
             <div>
